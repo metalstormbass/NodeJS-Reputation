@@ -15,8 +15,9 @@ jobs:
       SG_SECRET_KEY: ${{ secrets.SG_SECRET_KEY }}  
       CHKP_CLOUDGUARD_ID: ${{ secrets.CHKP_CLOUDGUARD_ID }}
       CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }} 
-    
+      
     steps:
+      #Check out repository
     - name: Checkout Code
       uses: actions/checkout@v1
 
