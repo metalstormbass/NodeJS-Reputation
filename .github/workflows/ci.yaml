@@ -17,6 +17,7 @@ jobs:
       CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }} 
       
     steps:
+
       #Check out repository
     - name: Checkout Code
       uses: actions/checkout@v1
@@ -30,8 +31,9 @@ jobs:
       #Install Dependencies      
     - name: Install Relevant Plugins + Dependencies
       run: |
-            npm install --save ejs
-            npm install --save express
+            npm install ejs --save 
+            npm install express --save 
+      
       #Scan the code with Shift Left
     - name: ShiftLeft Web Application Code Scan
       run: |
