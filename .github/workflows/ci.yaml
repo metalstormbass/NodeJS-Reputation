@@ -9,14 +9,29 @@ jobs:
   Pipeline-Job:
     name: 'CI Jobs'
     runs-on: ubuntu-latest
-    env:  
+    env:
+      working-directory: . 
+      SG_CLIENT_ID: ${{ secrets.SG_CLIENT_ID }}
+      SG_SECRET_KEY: ${{ secrets.SG_SECRET_KEY }}  
       CHKP_CLOUDGUARD_ID: ${{ secrets.CHKP_CLOUDGUARD_ID }}
-      CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }}
+      CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }} 
     
     steps:
     - name: Checkout Code
       uses: actions/checkout@v1
+
+      #Setup Environment
+    - name: "Setup Node.js"
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
       
+      #Install Dependencies      
+    - name: Install Relevant Plugins + Dependencies
+      run: |
+            npm install --save ejs
+            npm install --save express
+      #Scan the code with Shift Left
     - name: ShiftLeft Web Application Code Scan
       run: |
             wget https://shiftleft-prod.s3.amazonaws.com/blades/shiftleft/bin/linux/amd64/0.0.24/shiftleft
