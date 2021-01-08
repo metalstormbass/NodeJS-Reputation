@@ -1,0 +1,25 @@
+name: "Reputation App CI/CD Pipeline"
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  Pipeline-Job:
+    name: 'CI Jobs'
+    runs-on: ubuntu-latest
+    env:  
+      CHKP_CLOUDGUARD_ID: ${{ secrets.CHKP_CLOUDGUARD_ID }}
+      CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }}
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v1
+      
+    - name: ShiftLeft Web Application Code Scan
+      run: |
+            wget https://shiftleft-prod.s3.amazonaws.com/blades/shiftleft/bin/linux/amd64/0.0.24/shiftleft
+            chmod +x shiftleft
+            ./shiftleft code-scan -s .
+      continue-on-error: true    
