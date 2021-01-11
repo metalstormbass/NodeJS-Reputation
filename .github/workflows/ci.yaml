@@ -44,7 +44,7 @@ jobs:
 
       #Smoke test with sample data
     - name: Test Application Functionality
-      run: |
-            node server.js
-            curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
+      #run: |
+       #     node server.js
+        #    curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
 
