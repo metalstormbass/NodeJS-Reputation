@@ -54,10 +54,10 @@ body {
   .ghost-input:focus {
     border-bottom:1px solid #ddd;
   }
-  .ghost-button {
+.ghost-button {
     background-color: transparent;
-    border:2px solid #ddd;
-    padding:10px 30px;
+    border: 2px solid lightgrey;
+    padding: 15px 35px;
     width: 100%;
     min-width: 350px;
     -webkit-transition: all 0.1s ease-in-out;
@@ -65,10 +65,11 @@ body {
     -ms-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-  }
-  .ghost-button:hover {
-    border:2px solid #515151;
-  }
-  p {
-    color: #E64A19;
-  }
+    font-family: Consolas, monaco, monospace;
+    font-size: 25px;
+    color: lightgrey;
+}
+    .ghost-button:hover {
+        border: 2px solid deeppink;
+        font-weight: 900
+    }

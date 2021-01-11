@@ -32,7 +32,8 @@ jobs:
             npm install ejs --save 
             npm install express --save 
             npm install body-parser --save
-            npm install request --save
+            npm install node-fetch --save
+            npm install http --save
       
       #Scan the code with Shift Left
     - name: ShiftLeft Web Application Code Scan
