@@ -9,4 +9,4 @@ WORKDIR /NodeJS-Reputation
 RUN npm install
 
 EXPOSE 3000
-CMD["node bin/www.js"]
+CMD["node", "bin/www.js"]
