@@ -45,12 +45,7 @@ jobs:
             ./shiftleft code-scan -s .
       continue-on-error: true    
 
-     #Smoke test with sample data
-    - name: Test Application Functionality
-      run: |
-            node bin/www.js
-            curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
-
+    
      #Build Container
     - name: Build Docker Container
       run: |
@@ -60,4 +55,4 @@ jobs:
       run: |
          sudo docker run -d -p 3000:3000 michaelbraunbass/NodeJS-Repuation
          sleep 4
-         curl localhost:3000
+         curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
