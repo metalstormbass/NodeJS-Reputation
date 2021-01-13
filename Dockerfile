@@ -1,5 +1,5 @@
 #Dockerfile
-FROM node:14
+FROM node:14.15.4-slim
 
 RUN mkdir /NodeJS-Reputation
 COPY . ./NodeJS-Reputation
