@@ -53,6 +53,6 @@ jobs:
      #Container Smoke
     - name: Smoke Test
       run: |
-         sudo docker run -d -p 3000:3000 michaelbraunbass/nodejs-reputation
+         docker run -d -p 3000:3000 michaelbraunbass/nodejs-reputation
          sleep 4
-         curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
+         curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" localhost:3000  
