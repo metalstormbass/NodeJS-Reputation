@@ -1,8 +1,10 @@
 //Required Libraries
 const express = require('express')
 const bodyParser = require('body-parser');
-const request = require('request');
+const cookieParser = require('cookie-parser');
+const createError = require('http-errors');
 const path = require('path');
+const logger = require('morgan');
 
 //App Configuration
 const index = require('./routes/index');
@@ -11,6 +13,9 @@ const app = express()
 // Configure Views
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
+app.use(logger('dev'));
+app.use(cookieParser());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 

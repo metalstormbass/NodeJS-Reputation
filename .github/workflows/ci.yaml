@@ -32,8 +32,10 @@ jobs:
             npm install ejs --save 
             npm install express --save 
             npm install body-parser --save
-            npm install node-fetch --save
+            npm install cookie-parse --save
+            npm install http-errors --save
             npm install http --save
+            npm install morgan --save
       
       #Scan the code with Shift Left
     - name: ShiftLeft Web Application Code Scan
@@ -43,9 +45,19 @@ jobs:
             ./shiftleft code-scan -s .
       continue-on-error: true    
 
-      #Smoke test with sample data
-    #- name: Test Application Functionality
-      #run: |
-       #     node server.js
-        #    curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
+     #Smoke test with sample data
+    - name: Test Application Functionality
+      run: |
+            node /bin/www.js
+            curl -X POST --data "apiKey=${{ secrets.REPUTATION_API_KEY }}" --data "targetUrl=${{ secrets.REPUTATION_TARGET_URL }}" http://localhost:3000  
 
+     #Build Container
+    - name: Build Docker Container
+      run: |
+           docker build . -t michaelbraunbass/NodeJS-Repuation
+     #Container Smoke
+    - name: Smoke Test
+      run: |
+         sudo docker run -d -p 3000:3000 michaelbraunbass/NodeJS-Repuation
+         sleep 4
+         curl localhost:3000

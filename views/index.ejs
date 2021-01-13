@@ -16,12 +16,31 @@
           <input name="targetUrl" type="text" class="ghost-input" placeholder="Enter URL" required>
           <input type="submit" class="ghost-button" value="Get Reputation">
         </form>
+        <br><br>
         <% if(status !== null){ %>
-          <p><%= status %></p>
-        <% } %>
-        <% if(error !== null){ %>
-          <p><%= error %></p>
-        <% } %>
-      </fieldset>
+           
+           <h1>Resource:
+           <% if(status.resource !== null){ %>
+           <%= status.resource %><br>
+           <% } %>
+           <% if(status.risk !== null){ %>
+           Risk:
+          <%= status.risk %><br>
+          <% } %>
+          <% if(status.reputation.classifcation !== null){ %>
+          Classification:
+          <%= status.reputation.classifcation %><br>
+          <% } %>
+          <% if(status.reputation.severity  !== null){ %>
+          Severity:
+          <%= status.reputation.severity %><br>
+          <% } %>
+          Confidence:
+          <% if(status.reputation.confidence !== null){ %>
+          <%= status.reputation.confidence%><br>
+          <% } %>
+         </h1>
+        <% } %>      
+        </fieldset>
     </div>
   </body>
