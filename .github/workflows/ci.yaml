@@ -51,14 +51,14 @@ jobs:
       run: |
            docker build . -t michaelbraunbass/nodejs-reputation
  
-           #Container Scan
+    #Container Scan
     - name: Shift Left Container Scan
       run: |
         docker save michaelbraunbass/nodejs-reputation -o nodejs-reputation.tar
-        ./shiftleft image-scan -t 1800 -i ./nodejs-reputation.tar
+        ./shiftleft -t 1800  image-scan -i ./nodejs-reputation.tar
       continue-on-error: true
    
-     #Push to Dockerhub
+    #Push to Dockerhub
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
